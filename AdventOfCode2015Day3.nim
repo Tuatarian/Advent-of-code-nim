@@ -17,8 +17,8 @@ proc solve(s : var seq[int], inp : string) : int =
             of 'v':
                 s[1] += -1
                 echo "input is wrong"  # This should throw an error, but I couldn't be bothered. This will still tell you that you copied something wrong though
-        if map notin seen:
-            seen.add(map)
+        if s notin seen:
+            seen.add(s)
             ++result
 
 echo map.solve(inp)
