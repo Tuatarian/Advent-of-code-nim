@@ -4,19 +4,18 @@ var
     # Replace inp with key
 template `++`(i : int) = i += 1  # I've evolved to using a template for efficiency reasons
     
-proc solve(s : seq[int], inp : string) : int = 
+proc solve(s : var seq[int], inp : string) : int = 
     var seen : seq[seq[int]]
     for t in inp:
-        case t:  # this is a switch statement but nim calls it a case statement
+        case t: # this is a switch statement
             of '^':
-                map[1] += 1
+                s[1] += 1
             of '<':
-                map[0] += -1
+                s[0] += -1
             of '>':
-                map[0] += 1
+                s[0] += 1
             of 'v':
-                map[1] += -1
-            else:
+                s[1] += -1
                 echo "input is wrong"  # This should throw an error, but I couldn't be bothered. This will still tell you that you copied something wrong though
         if map notin seen:
             seen.add(map)
